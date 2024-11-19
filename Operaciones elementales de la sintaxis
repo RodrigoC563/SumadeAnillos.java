@@ -1,0 +1,59 @@
+1. Asignaciones iniciales 
+
+Estas operaciones son constantes, independientemente del tamaño de la matriz o del anillo:
+
+int d = matriz.length; // O(1)
+int suma = 0;          // O(1)
+k = k - 1;             // O(1)
+Total: 3 operaciones elementales
+
+2. Caso especial: Matriz impar y anillo central
+
+if (d % 2 != 0 && k == d / 2) {
+    return matriz[k][k];
+}
+
+Operaciones:
+
+Cálculo de d % 2 y comparación (d % 2 != 0): 1 operación.
+Cálculo de d / 2 y comparación (k == d / 2): 1 operación.
+Retorno del elemento central (matriz[k][k]): 1 operación.
+Total: 3 operaciones elementales en este caso
+
+3. Recorrido de los bordes superior e inferior
+
+for (int i = k; i < d - k; i++) {
+    suma += matriz[k][i];          // Borde superior
+    suma += matriz[d - k - 1][i];  // Borde inferior
+}
+
+Número de iteraciones:
+
+Este bucle recorre las columnas desde k hasta d - k - 1, es decir, (d - 2k) iteraciones.
+Operaciones por iteración:
+
+Acceso a matriz[k][i]: 1 operación.
+Suma suma += ...: 1 operación.
+Acceso a matriz[d - k - 1][i]: 1 operación.
+Suma suma += ...: 1 operación.
+Total por iteración: 4 operaciones elementales.
+
+Total para este bucle: 4(d-2k) operaciones elementales
+
+4) Análisis de espacio
+El algoritmo utiliza espacio adicional constante:
+
+a) Variables como d, suma, y k son de tamaño fijo.
+b) No se crean estructuras adicionales.
+
+Conclusión
+Complejidad temporal: 
+O(d), lineal en la dimensión de la matriz.
+
+Complejidad espacial: 
+O(1), ya que no utiliza memoria adicional más allá de las variables necesarias.
+
+
+
+
+
